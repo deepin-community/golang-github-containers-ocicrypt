@@ -1,5 +1,67 @@
-template-repository (1.0-1) unstable; urgency=medium
+golang-github-containers-ocicrypt (1.1.9-1) unstable; urgency=medium
 
-  * Initial release
+  * New upstream release
 
- -- Tsic404 <liuheng@deepin.org>  Sat, 28 Jan 2023 13:46:49 +0800
+ -- Reinhard Tartler <siretart@tauware.de>  Wed, 22 Nov 2023 09:18:05 -0500
+
+golang-github-containers-ocicrypt (1.1.7-2) unstable; urgency=medium
+
+  * Upload to unstable
+
+ -- Reinhard Tartler <siretart@tauware.de>  Thu, 07 Sep 2023 21:48:38 -0400
+
+golang-github-containers-ocicrypt (1.1.7-1) experimental; urgency=medium
+
+  * New upstream version 1.1.7
+  * Bump standards version
+  * add more tools/dependencies that make tests pass
+
+ -- Reinhard Tartler <siretart@tauware.de>  Thu, 19 Jan 2023 03:58:24 -0500
+
+golang-github-containers-ocicrypt (1.1.4-1) experimental; urgency=medium
+
+  * New upstream verison 1.1.4
+
+ -- Reinhard Tartler <siretart@tauware.de>  Sun, 15 May 2022 07:55:29 -0400
+
+golang-github-containers-ocicrypt (1.0.3-1) unstable; urgency=medium
+
+  * New upstream version: 1.0.3
+  * revert upstream move to mozilla/pkcs7 until it enters debian
+
+ -- Reinhard Tartler <siretart@tauware.de>  Sat, 21 Nov 2020 19:08:02 -0500
+
+golang-github-containers-ocicrypt (1.0.2-4) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Debian Janitor ]
+  * Set upstream metadata fields: Bug-Database, Bug-Submit, Repository,
+    Repository-Browse.
+
+  [ Shengjing Zhu ]
+  * Backport patch to fix test with expired key in testdata (Closes: #971163)
+
+ -- Shengjing Zhu <zhsj@debian.org>  Sun, 04 Oct 2020 16:41:33 +0800
+
+golang-github-containers-ocicrypt (1.0.2-3) unstable; urgency=medium
+
+  * Team upload.
+  * Backport upstream patch to avoid containerd dependency
+  * Remove golang-github-containerd-containerd-dev from Build-Depends.
+    And add missing golang-github-fullsailor-pkcs7-dev to Depends
+  * Bump debhelper-compat to 13
+
+ -- Shengjing Zhu <zhsj@debian.org>  Sun, 31 May 2020 16:36:26 +0800
+
+golang-github-containers-ocicrypt (1.0.2-2) unstable; urgency=medium
+
+  * Upload to unstable
+
+ -- Reinhard Tartler <siretart@tauware.de>  Sat, 30 May 2020 08:02:28 -0400
+
+golang-github-containers-ocicrypt (1.0.2-1) experimental; urgency=medium
+
+  * Initial release (Closes: #958303)
+
+ -- Reinhard Tartler <siretart@tauware.de>  Mon, 20 Apr 2020 07:47:43 -0400

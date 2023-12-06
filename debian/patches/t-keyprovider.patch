@@ -1,0 +1,12 @@
+Index: golang-github-containers-ocicrypt/keywrap/keyprovider/keyprovider_test.go
+===================================================================
+--- golang-github-containers-ocicrypt.orig/keywrap/keyprovider/keyprovider_test.go
++++ golang-github-containers-ocicrypt/keywrap/keyprovider/keyprovider_test.go
+@@ -1,3 +1,7 @@
++//go:build debian_disable
++
++// requires network connectivity, disable in debian
++
+ /*
+    Copyright The ocicrypt Authors.
+ 
