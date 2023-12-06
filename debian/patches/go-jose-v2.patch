@@ -1,0 +1,72 @@
+Author: Reinhard Tartler
+Description: build against go-jose.v2
+
+This reverts commit 19b5c83b3e57578e990dc916c17771281249d821
+Author: Miloslav Trmač <mitr@redhat.com>
+Date:   Mon Feb 13 23:15:17 2023 +0100
+
+    Migrate from gopkg.in/square/go-jose.v2 to github.com/go-jose/go-jose/v3
+
+    https://github.com/square/go-jose/tree/master says the former is deprecated.
+    Moving everything to /v3 will, eventually, allow callers to only contain one
+    vendored implementation instead of up to 3.
+
+    Signed-off-by: Miloslav Trmač <mitr@redhat.com>
+
+
+diff --git a/keywrap/jwe/keywrapper_jwe.go b/keywrap/jwe/keywrapper_jwe.go
+index 9d1fe20..cd2241c 100644
+--- b/keywrap/jwe/keywrapper_jwe.go
++++ a/keywrap/jwe/keywrapper_jwe.go
+@@ -24,7 +24,7 @@
+ 	"github.com/containers/ocicrypt/config"
+ 	"github.com/containers/ocicrypt/keywrap"
+ 	"github.com/containers/ocicrypt/utils"
+-	"github.com/go-jose/go-jose/v3"
++	jose "gopkg.in/square/go-jose.v2"
+ )
+
+ type jweKeyWrapper struct {
+diff --git a/keywrap/jwe/keywrapper_jwe_test.go b/keywrap/jwe/keywrapper_jwe_test.go
+index 1226986..3beea39 100644
+--- b/keywrap/jwe/keywrapper_jwe_test.go
++++ a/keywrap/jwe/keywrapper_jwe_test.go
+@@ -22,7 +22,7 @@
+
+ 	"github.com/containers/ocicrypt/config"
+ 	"github.com/containers/ocicrypt/utils"
+-	"github.com/go-jose/go-jose/v3"
++	jose "gopkg.in/square/go-jose.v2"
+ )
+
+ var oneEmpty []byte
+diff --git a/utils/utils.go b/utils/utils.go
+index c24ee3b..160f747 100644
+--- b/utils/utils.go
++++ a/utils/utils.go
+@@ -26,13 +26,14 @@
+ 	"strings"
+
+ 	"github.com/containers/ocicrypt/crypto/pkcs11"
+-	"github.com/go-jose/go-jose/v3"
++
+ 	"golang.org/x/crypto/openpgp"
++	json "gopkg.in/square/go-jose.v2"
+ )
+
+ // parseJWKPrivateKey parses the input byte array as a JWK and makes sure it's a private key
+ func parseJWKPrivateKey(privKey []byte, prefix string) (interface{}, error) {
+-	jwk := jose.JSONWebKey{}
++	jwk := json.JSONWebKey{}
+ 	err := jwk.UnmarshalJSON(privKey)
+ 	if err != nil {
+ 		return nil, fmt.Errorf("%s: Could not parse input as JWK: %w", prefix, err)
+@@ -45,7 +46,7 @@
+
+ // parseJWKPublicKey parses the input byte array as a JWK
+ func parseJWKPublicKey(privKey []byte, prefix string) (interface{}, error) {
+-	jwk := jose.JSONWebKey{}
++	jwk := json.JSONWebKey{}
+ 	err := jwk.UnmarshalJSON(privKey)
+ 	if err != nil {
+ 		return nil, fmt.Errorf("%s: Could not parse input as JWK: %w", prefix, err)

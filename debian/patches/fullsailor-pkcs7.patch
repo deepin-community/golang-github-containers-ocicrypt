@@ -1,0 +1,19 @@
+From: Reinhard Tartler
+Subject: revert upstream move to mozilla/pkcs7
+
+The latter may be better maintained, but is not present in debian yet.
+This patch can be dropped as soon as mozilla/pkcs7 enters debian
+
+Index: golang-github-containers-ocicrypt/keywrap/pkcs7/keywrapper_pkcs7.go
+===================================================================
+--- golang-github-containers-ocicrypt.orig/keywrap/pkcs7/keywrapper_pkcs7.go
++++ golang-github-containers-ocicrypt/keywrap/pkcs7/keywrapper_pkcs7.go
+@@ -25,7 +25,7 @@ import (
+ 	"github.com/containers/ocicrypt/config"
+ 	"github.com/containers/ocicrypt/keywrap"
+ 	"github.com/containers/ocicrypt/utils"
+-	"go.mozilla.org/pkcs7"
++	"github.com/fullsailor/pkcs7"
+ )
+ 
+ type pkcs7KeyWrapper struct {
